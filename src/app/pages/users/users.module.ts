@@ -8,6 +8,7 @@ import { MyConquestsComponent } from './my-conquests/my-conquests.component';
 import { MyDisciplinesComponent } from './my-disciplines/my-disciplines.component';
 import { UsersMaterialModule } from '@app/shared/material/users-material.module';
 import { SharedModule } from '@app/shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { SharedModule } from '@app/shared/shared.module';
     SharedModule,
     UsersRoutingModule,
     UsersMaterialModule,
+    MatButtonModule
   ]
 })
 export class UsersModule { }
