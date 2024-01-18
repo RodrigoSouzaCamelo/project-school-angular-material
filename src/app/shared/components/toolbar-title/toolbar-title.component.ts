@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar-title',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toolbar-title.component.scss']
 })
 export class ToolbarTitleComponent implements OnInit {
+  @Input() title = "";
+  @Input() icon = "";
 
   constructor() { }
 
