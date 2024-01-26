@@ -7,7 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ToolbarTitleComponent implements OnInit {
   @Input() title = "";
-  @Input() icon = "";
+
+  iconFa = '';
+  iconMat = '';
+
+  @Input() 
+  set icon(value: string) {
+    value.includes('fa-') ? 
+      this.iconFa = `icon-space-fa ${value}` : 
+      this.iconMat = value;
+  }
 
   constructor() { }
 
