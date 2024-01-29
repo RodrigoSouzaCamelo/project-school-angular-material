@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { fromEvent, map } from 'rxjs';
+import { MenuItem } from './shared/models/menuItem';
+import { menuItems } from './shared/models/menu';
 
 export const TEXT_LIMIT = 60;
 export const SHADOW_LIMIT = 100;
@@ -15,6 +17,8 @@ export class AppComponent implements OnInit {
   public isSmallScreen: boolean = false;
   public popText = false;
   public applyShadow = false;
+
+  public itemsMenu: MenuItem[] = menuItems;
 
   get sideNavOpened() {
     return !this.isSmallScreen;
