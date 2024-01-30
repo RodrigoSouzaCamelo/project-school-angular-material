@@ -73,4 +73,23 @@ mat-sidenav-container mat-sidenav-content {
     font-size: 0.8rem;
     color: gray;
   }
+
+  mat-nav-list {
+    padding: 8px;
+
+    a {
+      border-radius: 10px;
+      margin-bottom: 4px;
+      padding-top: 1px;
+      font-size: 0.9rem;
+
+      span {
+        padding-top: 4px;
+      }
+    }
+
+    a:hover {
+      background-color: #e6e6e6;
+    }
+  }
 }
