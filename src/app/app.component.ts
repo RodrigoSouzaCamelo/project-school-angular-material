@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
         filter(event => event instanceof NavigationEnd),
         map(event => event as NavigationEnd)
       ).subscribe((event: NavigationEnd) => {
-        let moduleName = event.url.split('/')[1]
+        let moduleName = event.urlAfterRedirects.split('/')[1]
   
         this.menuName = this.itemsMenu.filter(
           (item: MenuItem) => item.link == `/${moduleName}`
