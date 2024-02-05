@@ -7,6 +7,7 @@ import { MaterialModule } from './shared/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ToolbarMenuComponent } from './shared/components/toolbar-menu/toolbar-menu.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ToolbarMenuComponent } from './shared/components/toolbar-menu/toolbar-m
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   exports: [
   ],

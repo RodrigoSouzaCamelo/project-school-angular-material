@@ -12,8 +12,8 @@ export class CoursesService {
   baseURL = `${environment.apiURL}/courses`;
   private http = inject(HttpClient);
 
-  public get(): Observable<Course> {
-    return this.http.get<Course>(`${this.baseURL}`);
+  public get(): Observable<Course[]> {
+    return this.http.get<Course[]>(`${this.baseURL}`);
   }
 
   public getById(id: number): Observable<Course> {
