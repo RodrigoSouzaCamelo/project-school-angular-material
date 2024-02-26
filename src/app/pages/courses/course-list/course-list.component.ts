@@ -22,9 +22,10 @@ export class CourseListComponent implements OnInit {
     this.getCourses();
   }
 
-  public validation() {
+  public validation(): void {
     this.form = this.fb.group({
-      category: ['']
+      category: [''],
+      search: ['']
     })
   }
 
@@ -32,6 +33,10 @@ export class CourseListComponent implements OnInit {
     this.courseService.get().subscribe((response: Course[]) => {
       this.courseList = response;
     })
+  }
+
+  public doSearch(): void {
+
   }
 
 }

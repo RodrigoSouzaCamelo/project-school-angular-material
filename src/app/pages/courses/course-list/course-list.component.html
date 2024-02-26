@@ -1,12 +1,20 @@
 <form [formGroup]="form">
     <div fxLayout="row wrap">
-        <mat-form-field>
+        <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="24">
             <mat-label>Categoria</mat-label>
             <mat-select formControlName="category">
                 <mat-option>Selecione</mat-option>
                 <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
             </mat-select>
         </mat-form-field>
+
+        <mat-form-field fxFlex="50" fxFlex.xs="100" fxFlex.sm="50">
+            <mat-label>Filtro</mat-label>
+            <input matInput formControlName="search">
+            <button matSuffix mat-icon-button (click)="doSearch()">
+                <mat-icon matSuffix>search</mat-icon>
+            </button>
+          </mat-form-field>
     </div>
 </form>
 
