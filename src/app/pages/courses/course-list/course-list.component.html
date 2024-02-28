@@ -14,7 +14,18 @@
             <button matSuffix mat-icon-button (click)="doSearch()">
                 <mat-icon matSuffix>search</mat-icon>
             </button>
-          </mat-form-field>
+        </mat-form-field>
+
+        <mat-paginator 
+            fxFlex="26" 
+            fxFlex.xs="100" 
+            fxFlex.sm="26"
+            [length]="100" 
+            [pageSize]="10" 
+            [pageSizeOptions]="[5, 10, 25, 100]" 
+            aria-label="Select page"
+        >
+        </mat-paginator>
     </div>
 </form>
 
