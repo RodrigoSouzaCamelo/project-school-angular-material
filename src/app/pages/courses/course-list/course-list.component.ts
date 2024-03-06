@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { CoursesService } from '@app/services/courses.service';
 import { Category, Course } from '@app/shared/models/course';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-course-list',
@@ -28,16 +29,18 @@ export class CourseListComponent implements OnInit {
   ngOnInit(): void {
     this.getCourses(1, 10, '', '');
     this.validation();
-    this.form.valueChanges.subscribe((value) => {
-      if(value) {
-        this.getCourses(
-          this.currentPage,
-          this.pageSize,
-          this.f.search.value ?? '',
-          this.f.category.value ?? ''
-        );
-      }
-    })
+    this.form.valueChanges
+      .pipe(debounceTime(1500))
+      .subscribe((value) => {
+        if (value) {
+          this.getCourses(
+            this.currentPage,
+            this.pageSize,
+            this.f.search.value ?? '',
+            this.f.category.value ?? ''
+          );
+        }
+      })
   }
 
   public validation(): void {
