@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { CoursesService } from '@app/services/courses.service';
 import { Category, Course } from '@app/shared/models/course';
-import { debounceTime } from 'rxjs';
+import { Observable, debounceTime, tap } from 'rxjs';
 
 @Component({
   selector: 'app-course-list',
@@ -17,6 +17,7 @@ export class CourseListComponent implements OnInit {
   public courseList: Course[] = [];
   categories = Object.values(Category);
   form!: FormGroup;
+  courseObservable!: Observable<any>;
 
   totalCount: number = 0;
   currentPage: number = 1;
@@ -51,14 +52,16 @@ export class CourseListComponent implements OnInit {
   }
 
   public getCourses(currentPage: number, pageSize: number, search: string, category: string): void {
-    this.courseService
+    this.courseObservable = this.courseService
       .get(currentPage, pageSize, search, category)
-      .subscribe((response) => {
-        this.courseList = response.body as Course[];
-        let totalCount = response.headers.get('X-TOTAL-COUNT');
+      .pipe(
+        tap((response) => {
+          this.courseList = response.body as Course[];
+          let totalCount = response.headers.get('X-TOTAL-COUNT');
 
-        this.totalCount = totalCount ? Number(totalCount) : 0;
-      });
+          this.totalCount = totalCount ? Number(totalCount) : 0;
+        })
+      );
   }
 
   public doSearch(): void {
