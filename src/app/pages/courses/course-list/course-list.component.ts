@@ -65,7 +65,17 @@ export class CourseListComponent implements OnInit {
   }
 
   public doSearch(): void {
+    const search = this.form.get('search')?.value;
+    const category = this.form.get('category')?.value;
 
+    if(!search) return;
+    
+    this.getCourses(
+      this.currentPage,
+      this.pageSize,
+      search,
+      category
+    );
   }
 
   public handlePageEvent(e: PageEvent): void {
