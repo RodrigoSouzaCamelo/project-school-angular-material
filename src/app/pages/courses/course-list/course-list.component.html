@@ -56,6 +56,13 @@
             </mat-card-actions>
         </mat-card>
     </div>
+
+    <div *ngIf="!courseList.length">
+        <br/>
+        <p>Nenhum curso encontrado para o filtro: </p>
+        <p *ngIf="f.category.value"><b>Categoria:</b> {{f.category.value}}</p>
+        <p><b>Filtro:</b> {{f.search.value}}</p>
+    </div>
 </div>
 
 <ng-template #loading>
